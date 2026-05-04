@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "./tokens.css";
+@import "../lib/styles/tokens.css";
 
 @theme {
   /* Surface / neutral tokens */
