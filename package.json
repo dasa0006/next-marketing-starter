@@ -25,6 +25,7 @@
     "@chromatic-com/storybook": "^5.1.2",
     "@commitlint/cli": "^20.5.3",
     "@commitlint/config-conventional": "^20.5.3",
+    "@playwright/test": "^1.59.1",
     "@storybook/addon-a11y": "^10.3.6",
     "@storybook/addon-docs": "^10.3.6",
     "@storybook/addon-vitest": "^10.3.6",
