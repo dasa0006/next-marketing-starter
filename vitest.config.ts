@@ -1,11 +1,9 @@
+import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
+import react from "@vitejs/plugin-react";
+import { playwright } from "@vitest/browser-playwright";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-
 import { defineConfig } from "vitest/config";
-
-import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
-
-import { playwright } from "@vitest/browser-playwright";
 
 const dirname =
   typeof __dirname !== "undefined"
@@ -14,7 +12,10 @@ const dirname =
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
+  plugins: [react()],
+  resolve: { tsconfigPaths: true },
   test: {
+    environment: "jsdom",
     projects: [
       {
         extends: true,
