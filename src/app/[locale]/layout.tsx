@@ -1,4 +1,5 @@
 import { routing } from "@/i18n/routing";
+import { Params } from "@/types";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -9,7 +10,7 @@ export function generateStaticParams() {
 
 type Props = {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: Params;
 };
 
 export default async function LocaleLayout({ children, params }: Props) {

@@ -1,0 +1,14 @@
+export const SITE_CONFIG = {
+  /** Canonical origin — no trailing slash */
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com",
+  name: "Acme, inc.",
+  description:
+    "One clear sentence that describes what your product does and who it helps.",
+  /** Shown in Twitter cards and some search snippets */
+  twitterHandle: "@yourbrand",
+  /** Default OG / Twitter share image (1200×630) */
+  ogImage: "/og-default.png",
+  defaultLocale: "en",
+  locales: ["en", "da"],
+  timezone: "Europe/Vienna",
+} as const;
