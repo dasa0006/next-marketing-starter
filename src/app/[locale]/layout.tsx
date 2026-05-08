@@ -1,3 +1,4 @@
+import PrimaryLayout from "@/components/layout/primaryLayout/PrimaryLayout";
 import { routing } from "@/i18n/routing";
 import { Params } from "@/types";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
@@ -25,7 +26,9 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html className="h-full" lang={locale}>
       <body>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <PrimaryLayout>{children}</PrimaryLayout>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
