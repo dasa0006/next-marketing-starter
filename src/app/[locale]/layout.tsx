@@ -1,12 +1,26 @@
 import PrimaryLayout from "@/components/layout/primaryLayout/PrimaryLayout";
 import { routing } from "@/i18n/routing";
-import { Params } from "@/types";
+import { Params, ParamsProps } from "@/types";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: ParamsProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("Metadata");
+
+  return {
+    title: {
+      default: t("title"),
+      template: `%s | ${t("title")}`,
+    },
+    description: t("description"),
+  };
 }
 
 type Props = {

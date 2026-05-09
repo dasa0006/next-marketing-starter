@@ -9,7 +9,7 @@ const PrimaryLayout = ({ children }: PrimaryLayoutProps) => {
   return (
     <>
       <SiteHeader />
-      <main>{children}</main>;
+      <main>{children}</main>
       <SiteFooter />
     </>
   );

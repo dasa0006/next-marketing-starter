@@ -1,9 +1,9 @@
-import { Params } from "@/types";
+import { ParamsProps } from "@/types";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { use } from "react";
 
-export default function IndexPage({ params }: { params: Params }) {
+export default function IndexPage({ params }: ParamsProps) {
   const { locale } = use(params);
 
   // Enable static rendering
