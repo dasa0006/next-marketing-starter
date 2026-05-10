@@ -18,6 +18,10 @@ const cspHeader = `
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  images: {
+    loader: "custom",
+    loaderFile: "./src/lib/image-loader.ts",
+  },
   async headers() {
     return [
       {

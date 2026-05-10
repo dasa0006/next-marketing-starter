@@ -1,5 +1,7 @@
+// .storybook/preview.tsx
 import type { Preview } from "@storybook/nextjs-vite";
 import "../src/app/globals.css";
+import { geistMono, geistSans } from "../src/lib/styles/fonts";
 import nextIntl from "./next-intl";
 
 const preview: Preview = {
@@ -10,6 +12,16 @@ const preview: Preview = {
       da: "Dansk",
     },
   },
+  decorators: [
+    (Story) => {
+      document.documentElement.classList.add(
+        geistSans.variable,
+        geistMono.variable,
+        "antialiased"
+      );
+      return <Story />;
+    },
+  ],
   parameters: {
     nextIntl,
     controls: {
@@ -18,11 +30,7 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
-
     a11y: {
-      // 'todo' - show a11y violations in the test UI only
-      // 'error' - fail CI on a11y violations
-      // 'off' - skip a11y checks entirely
       test: "todo",
     },
     nextjs: {

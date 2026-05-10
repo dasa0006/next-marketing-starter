@@ -1,5 +1,6 @@
 import PrimaryLayout from "@/components/layout/primaryLayout/PrimaryLayout";
 import { routing } from "@/i18n/routing";
+import { fontVariables } from "@/lib/styles/fonts";
 import { Params, ParamsProps } from "@/types";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -39,7 +40,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <html className="h-full" lang={locale}>
-      <body>
+      <body className={`${fontVariables} antialiased`}>
         <NextIntlClientProvider>
           <PrimaryLayout>{children}</PrimaryLayout>
         </NextIntlClientProvider>
