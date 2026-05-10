@@ -42,15 +42,14 @@ Provide a **GitHub Template Repo** that creates a fully functional, best‑pract
 
 ### Routing & Internationalization (powered by `next-intl`)
 
-- **FR1:** The app must support multiple locales via URL path prefix (e.g., `/en/about`, `/fr/about`), handled by `next-intl` middleware.
+- **FR1:** The app must support multiple locales via URL path prefix (e.g., `/en/about`, `/da/about`), handled by `next-intl` proxy.
 - **FR2:** A default locale must be automatically applied when no prefix is present, using `next-intl`’s locale detection logic.
 - **FR3:** All internal navigation must use `next-intl`’s navigation utilities (`useRouter`, `<Link>`, `getPathname`) to automatically preserve locale context—developers never construct prefixed URLs manually.
 - **FR4:** SEO metadata (title, description) must be locale‑aware and derived from `next-intl`’s translation dictionaries via helper functions.
 - **FR6:** All displayed dates, numbers, and currencies must use `next-intl`’s formatting hooks, with examples in the component catalog.
 - **FR7:** Translation dictionaries must follow a structured, scalable convention:
-  - `locales/{locale}/common.json` – shared UI strings.
-  - `locales/{locale}/validations.json` – form validation messages.
-  - Per‑page or per‑feature namespaces as needed.
+  - `messages/base/{locale}.json` – base messages for repitive legal content or other.
+  - `messages/custom/{locale}.json` – custom messages on a per template basis.
   - Clear documentation on adding new namespaces must be provided.
 
 ### Core UI Components (Provided As Starting Points, Not Opaque Libraries)
