@@ -1,5 +1,5 @@
 import SiteFooter from "../siteFooter/SiteFooter";
-import SiteHeader from "../siteheader/SiteHeader";
+import SiteHeader from "../siteHeader/SiteHeader";
 
 interface PrimaryLayoutProps {
   children: React.ReactNode;
