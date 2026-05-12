@@ -1,84 +1,153 @@
-/* tokens.css — Default brand color system (adjust per client) */
+/* =============================================================================
+   Design Tokens — Single Source of Truth
+   All visual decisions live here. Reference them in components via Tailwind
+   utilities (bg-brand-primary, text-text-muted, rounded-card, shadow-card …)
+   or directly as CSS custom properties (var(--token-brand-primary)).
+
+   Naming convention:
+     --token-{category}-{variant}
+
+   Never reference --token-* directly in component styles; always go through
+   the Tailwind utilities exposed in globals.css. This keeps the mapping layer
+   as the only place that needs updating when tokens change.
+   ============================================================================= */
 
 :root {
-  /* ===== Neutral / Surface ===== */
-  --color-bg: oklch(0.98 0 0);
-  --color-surface: oklch(0.94 0 0);
-  --color-border: oklch(0.88 0 0);
-  --color-text: oklch(0.2 0 0);
-  --color-text-secondary: oklch(0.5 0 0);
+  /* --------------------------------------------------------------------------
+     Brand
+     The palette a marketing site is built around. Swap these to re-theme the
+     entire product without touching a single component.
+     -------------------------------------------------------------------------- */
+  --token-brand-primary: oklch(52% 0.19 255); /* main CTA blue        */
+  --token-brand-primary-hover: oklch(46% 0.19 255); /* darker on hover      */
+  --token-brand-primary-subtle: oklch(95% 0.04 255); /* tinted bg tint       */
+  --token-brand-primary-fg: oklch(99% 0 0); /* text on primary bg   */
+  --token-brand-secondary: oklch(62% 0.15 190); /* teal accent          */
+  --token-brand-secondary-fg: oklch(99% 0 0);
+  --token-brand-accent: oklch(72% 0.22 55); /* amber highlight      */
 
-  /* ===== Primary (blue) ===== */
-  --color-primary-light: oklch(0.82 0.08 250);
-  --color-primary: oklch(0.55 0.2 250);
-  --color-primary-dark: oklch(0.35 0.15 250);
+  /* --------------------------------------------------------------------------
+     Text
+     Semantic roles, not raw colours. Use text-text-primary in components;
+     never text-zinc-800. This way a single token change propagates everywhere.
+     -------------------------------------------------------------------------- */
+  --token-text-primary: oklch(14% 0.01 255); /* headings, body copy  */
+  --token-text-secondary: oklch(38% 0.01 255); /* supporting text      */
+  --token-text-muted: oklch(58% 0.01 255); /* captions, meta       */
+  --token-text-disabled: oklch(72% 0.01 255); /* non-interactive      */
+  --token-text-inverted: oklch(98% 0 0); /* on dark backgrounds  */
+  --token-text-on-brand: var(--token-brand-primary-fg);
 
-  /* ===== Secondary (teal) ===== */
-  --color-secondary-light: oklch(0.85 0.08 180);
-  --color-secondary: oklch(0.6 0.15 180);
-  --color-secondary-dark: oklch(0.4 0.12 180);
+  /* --------------------------------------------------------------------------
+     Surface
+     Layer backgrounds from base → raised → overlay. Consistent elevation
+     model across cards, modals, popovers.
+     -------------------------------------------------------------------------- */
+  --token-surface-base: oklch(100% 0 0); /* page background  */
+  --token-surface-subtle: oklch(97% 0.005 255); /* zebra rows, chips */
+  --token-surface-raised: oklch(99% 0 0); /* card background  */
+  --token-surface-overlay: oklch(100% 0 0 / 0.85); /* modal backdrop   */
+  --token-surface-inverted: oklch(14% 0.01 255); /* dark section bg  */
 
-  /* ===== Accent (warm orange) ===== */
-  --color-accent-light: oklch(0.88 0.1 70);
-  --color-accent: oklch(0.7 0.18 45);
-  --color-accent-dark: oklch(0.5 0.15 45);
+  /* --------------------------------------------------------------------------
+     Border
+     Three strengths for dividers, inputs, and focus rings.
+     -------------------------------------------------------------------------- */
+  --token-border-subtle: oklch(92% 0.005 255);
+  --token-border-default: oklch(85% 0.008 255);
+  --token-border-strong: oklch(60% 0.01 255);
+  --token-border-focus: var(--token-brand-primary);
 
-  /* ===== Semantic: Success ===== */
-  --color-success-light: oklch(0.88 0.1 140);
-  --color-success: oklch(0.6 0.18 140);
-  --color-success-dark: oklch(0.4 0.12 140);
+  /* --------------------------------------------------------------------------
+     Feedback
+     Status colours for alerts, form validation, and toasts.
+     -------------------------------------------------------------------------- */
+  --token-feedback-success: oklch(58% 0.17 155);
+  --token-feedback-warning: oklch(72% 0.18 70);
+  --token-feedback-error: oklch(55% 0.22 25);
+  --token-feedback-info: oklch(58% 0.16 255);
 
-  /* ===== Semantic: Error ===== */
-  --color-error-light: oklch(0.9 0.08 25);
-  --color-error: oklch(0.55 0.2 25);
-  --color-error-dark: oklch(0.35 0.15 25);
+  /* --------------------------------------------------------------------------
+     Spacing
+     Named semantic gaps rather than ad-hoc Tailwind numbers. Changing
+     --token-spacing-section here updates every section gap site-wide.
 
-  /* ===== Semantic: Warning ===== */
-  --color-warning-light: oklch(0.94 0.1 85);
-  --color-warning: oklch(0.75 0.15 85);
-  --color-warning-dark: oklch(0.5 0.12 85);
+     Usage with Tailwind utilities:
+       py-section      → vertical section padding  (6 rem)
+       py-section-sm   → tighter section padding   (4 rem)
+       p-card          → card internal padding     (1.5 rem)
+       p-card-sm       → compact card padding      (1 rem)
+     -------------------------------------------------------------------------- */
+  --token-spacing-section: 6rem; /* 96 px  */
+  --token-spacing-section-sm: 4rem; /* 64 px  */
+  --token-spacing-card: 1.5rem; /* 24 px  */
+  --token-spacing-card-sm: 1rem; /* 16 px  */
 
-  /* ===== Semantic: Info (distinct from primary) ===== */
-  --color-info-light: oklch(0.85 0.08 230);
-  --color-info: oklch(0.6 0.15 230);
-  --color-info-dark: oklch(0.4 0.12 230);
+  /* --------------------------------------------------------------------------
+     Border Radius
+     Consistent shape language across the design. rounded-card on every card,
+     rounded-pill on every badge/chip.
+     -------------------------------------------------------------------------- */
+  --token-radius-sm: 0.25rem; /*  4 px */
+  --token-radius-md: 0.5rem; /*  8 px */
+  --token-radius-lg: 0.75rem; /* 12 px */
+  --token-radius-card: 1rem; /* 16 px */
+  --token-radius-xl: 1.5rem; /* 24 px */
+  --token-radius-pill: 9999px;
+
+  /* --------------------------------------------------------------------------
+     Shadow
+     Elevation scale + a card-specific shadow that includes a border ring so
+     cards don't need a separate border utility.
+     -------------------------------------------------------------------------- */
+  --token-shadow-sm:
+    0 1px 2px oklch(0% 0 0 / 0.06), 0 1px 3px oklch(0% 0 0 / 0.04);
+  --token-shadow-md:
+    0 4px 6px oklch(0% 0 0 / 0.07), 0 2px 4px oklch(0% 0 0 / 0.06);
+  --token-shadow-lg:
+    0 10px 15px oklch(0% 0 0 / 0.1), 0 4px 6px oklch(0% 0 0 / 0.05);
+  --token-shadow-card:
+    0 2px 8px oklch(0% 0 0 / 0.06), 0 0 0 1px var(--token-border-subtle);
 }
 
-/* ===== Dark mode ===== */
+/* =============================================================================
+   Dark Mode Overrides
+   Only swap the raw values here; Tailwind utilities pick up the change
+   automatically because they reference the token vars via @theme inline.
+   ============================================================================= */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: oklch(0.15 0 0);
-    --color-surface: oklch(0.22 0 0);
-    --color-border: oklch(0.35 0 0);
-    --color-text: oklch(0.92 0 0);
-    --color-text-secondary: oklch(0.62 0 0);
+    /* brand — slightly lighter so it pops on dark surfaces */
+    --token-brand-primary: oklch(63% 0.19 255);
+    --token-brand-primary-hover: oklch(69% 0.19 255);
+    --token-brand-primary-subtle: oklch(20% 0.06 255);
 
-    --color-primary-light: oklch(0.4 0.15 250);
-    --color-primary: oklch(0.65 0.18 250);
-    --color-primary-dark: oklch(0.85 0.06 250);
+    /* text */
+    --token-text-primary: oklch(96% 0.005 255);
+    --token-text-secondary: oklch(72% 0.008 255);
+    --token-text-muted: oklch(52% 0.008 255);
+    --token-text-disabled: oklch(38% 0.008 255);
+    --token-text-inverted: oklch(14% 0.01 255);
 
-    --color-secondary-light: oklch(0.45 0.12 180);
-    --color-secondary: oklch(0.7 0.13 180);
-    --color-secondary-dark: oklch(0.88 0.06 180);
+    /* surface */
+    --token-surface-base: oklch(10% 0.01 255);
+    --token-surface-subtle: oklch(14% 0.01 255);
+    --token-surface-raised: oklch(17% 0.01 255);
+    --token-surface-overlay: oklch(10% 0.01 255 / 0.9);
+    --token-surface-inverted: oklch(96% 0.005 255);
 
-    --color-accent-light: oklch(0.5 0.15 45);
-    --color-accent: oklch(0.75 0.15 45);
-    --color-accent-dark: oklch(0.9 0.08 45);
+    /* border */
+    --token-border-subtle: oklch(22% 0.01 255);
+    --token-border-default: oklch(28% 0.01 255);
+    --token-border-strong: oklch(45% 0.01 255);
 
-    --color-success-light: oklch(0.45 0.12 140);
-    --color-success: oklch(0.7 0.15 140);
-    --color-success-dark: oklch(0.9 0.06 140);
-
-    --color-error-light: oklch(0.4 0.15 25);
-    --color-error: oklch(0.65 0.18 25);
-    --color-error-dark: oklch(0.88 0.06 25);
-
-    --color-warning-light: oklch(0.5 0.12 85);
-    --color-warning: oklch(0.8 0.12 85);
-    --color-warning-dark: oklch(0.95 0.06 85);
-
-    --color-info-light: oklch(0.45 0.12 230);
-    --color-info: oklch(0.7 0.13 230);
-    --color-info-dark: oklch(0.9 0.06 230);
+    /* shadow — heavier because dark surfaces need more contrast */
+    --token-shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.3);
+    --token-shadow-md:
+      0 4px 6px oklch(0% 0 0 / 0.4), 0 2px 4px oklch(0% 0 0 / 0.3);
+    --token-shadow-lg:
+      0 10px 15px oklch(0% 0 0 / 0.5), 0 4px 6px oklch(0% 0 0 / 0.35);
+    --token-shadow-card:
+      0 2px 8px oklch(0% 0 0 / 0.3), 0 0 0 1px var(--token-border-subtle);
   }
 }
