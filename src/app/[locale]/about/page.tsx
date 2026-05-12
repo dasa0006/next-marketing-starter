@@ -1,23 +1,29 @@
+import AboutPage from "@/components/pages/About";
+import { routing } from "@/i18n/routing";
 import { ParamsProps } from "@/types";
-import { useTranslations } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { use } from "react";
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({ params }: ParamsProps) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const t = await getTranslations("AboutPage");
+  const t = await getTranslations("AboutPage.metadata");
 
   return {
-    title: t("metaTitle"), // "About Us" | "Acme, inc." (auto‑appended)
-    description: t("metaDescription"),
+    title: {
+      default: t("title"),
+      template: `%s | ${t("title")}`,
+    },
+    description: t("description"),
   };
 }
+export default async function Page({ params }: ParamsProps) {
+  const { locale } = await params;
 
-export default function AboutPage({ params }: ParamsProps) {
-  const { locale } = use(params); // you can use `use()` if needed
+  // Enable static rendering
   setRequestLocale(locale);
-  const t = useTranslations("AboutPage");
 
-  return <h1 className="">{t("heading")}</h1>;
+  return <AboutPage />;
 }
