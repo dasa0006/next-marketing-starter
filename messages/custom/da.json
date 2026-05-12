@@ -1,12 +1,14 @@
 {
-  "IndexPage": { "content": "Dansk" },
   "Metadata": {
     "title": "Acme, inc.",
     "description": "En klar sætning der beskriver hvad dit produkt gør og hvem det hjælper."
   },
+  "IndexPage": { "content": "Dansk" },
   "AboutPage": {
-    "metaTitle": "Om os",
-    "metaDescription": "Lær mere om vores team og mission.",
+    "metadata": {
+      "title": "Om os",
+      "description": "Lær mere om vores team og mission."
+    },
     "heading": "Hvem vi er"
   }
 }

@@ -1,12 +1,14 @@
 {
-  "IndexPage": { "content": "English" },
   "Metadata": {
     "title": "Acme, inc.",
     "description": "One clear sentence that describes what your product does and who it helps."
   },
+  "IndexPage": { "content": "English" },
   "AboutPage": {
-    "metaTitle": "About Us",
-    "metaDescription": "Learn more about our team and mission.",
+    "metadata": {
+      "title": "About Us",
+      "description": "Learn more about our team and mission."
+    },
     "heading": "Who we are"
   }
 }
