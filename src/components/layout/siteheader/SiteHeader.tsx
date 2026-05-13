@@ -4,6 +4,7 @@ import { MaxWidthWrapper } from "@/components/layout/maxWidthWrapper/MaxWidthWra
 import Brand from "@/components/ui/brand/Brand";
 import LinkButton from "@/components/ui/linkButton/LinkButton";
 import { LocaleSwitcher } from "@/components/ui/localeSwitcher/LocaleSwitcher";
+import ToggleMode from "@/components/ui/toggleMode/ToggleMode";
 import { Link } from "@/i18n/navigation";
 import { useScrolled } from "@/lib/hooks/useScrolled";
 import { cn } from "@/lib/utils";
@@ -74,6 +75,9 @@ const SiteHeader = ({
                 </ul>
               </nav>
             )}
+
+            {/* Toggle dark mode */}
+            <ToggleMode />
 
             {/* Desktop CTAs + mobile hamburger */}
             <div className="flex items-center gap-2">

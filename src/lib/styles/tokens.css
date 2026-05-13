@@ -115,39 +115,37 @@
    Only swap the raw values here; Tailwind utilities pick up the change
    automatically because they reference the token vars via @theme inline.
    ============================================================================= */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* brand — slightly lighter so it pops on dark surfaces */
-    --token-brand-primary: oklch(63% 0.19 255);
-    --token-brand-primary-hover: oklch(69% 0.19 255);
-    --token-brand-primary-subtle: oklch(20% 0.06 255);
+.dark {
+  /* brand — slightly lighter so it pops on dark surfaces */
+  --token-brand-primary: oklch(63% 0.19 255);
+  --token-brand-primary-hover: oklch(69% 0.19 255);
+  --token-brand-primary-subtle: oklch(20% 0.06 255);
 
-    /* text */
-    --token-text-primary: oklch(96% 0.005 255);
-    --token-text-secondary: oklch(72% 0.008 255);
-    --token-text-muted: oklch(52% 0.008 255);
-    --token-text-disabled: oklch(38% 0.008 255);
-    --token-text-inverted: oklch(14% 0.01 255);
+  /* text */
+  --token-text-primary: oklch(96% 0.005 255);
+  --token-text-secondary: oklch(72% 0.008 255);
+  --token-text-muted: oklch(52% 0.008 255);
+  --token-text-disabled: oklch(38% 0.008 255);
+  --token-text-inverted: oklch(14% 0.01 255);
 
-    /* surface */
-    --token-surface-base: oklch(10% 0.01 255);
-    --token-surface-subtle: oklch(14% 0.01 255);
-    --token-surface-raised: oklch(17% 0.01 255);
-    --token-surface-overlay: oklch(10% 0.01 255 / 0.9);
-    --token-surface-inverted: oklch(96% 0.005 255);
+  /* surface */
+  --token-surface-base: oklch(10% 0.01 255);
+  --token-surface-subtle: oklch(14% 0.01 255);
+  --token-surface-raised: oklch(17% 0.01 255);
+  --token-surface-overlay: oklch(10% 0.01 255 / 0.9);
+  --token-surface-inverted: oklch(96% 0.005 255);
 
-    /* border */
-    --token-border-subtle: oklch(22% 0.01 255);
-    --token-border-default: oklch(28% 0.01 255);
-    --token-border-strong: oklch(45% 0.01 255);
+  /* border */
+  --token-border-subtle: oklch(22% 0.01 255);
+  --token-border-default: oklch(28% 0.01 255);
+  --token-border-strong: oklch(45% 0.01 255);
 
-    /* shadow — heavier because dark surfaces need more contrast */
-    --token-shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.3);
-    --token-shadow-md:
-      0 4px 6px oklch(0% 0 0 / 0.4), 0 2px 4px oklch(0% 0 0 / 0.3);
-    --token-shadow-lg:
-      0 10px 15px oklch(0% 0 0 / 0.5), 0 4px 6px oklch(0% 0 0 / 0.35);
-    --token-shadow-card:
-      0 2px 8px oklch(0% 0 0 / 0.3), 0 0 0 1px var(--token-border-subtle);
-  }
+  /* shadow — heavier because dark surfaces need more contrast */
+  --token-shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.3);
+  --token-shadow-md:
+    0 4px 6px oklch(0% 0 0 / 0.4), 0 2px 4px oklch(0% 0 0 / 0.3);
+  --token-shadow-lg:
+    0 10px 15px oklch(0% 0 0 / 0.5), 0 4px 6px oklch(0% 0 0 / 0.35);
+  --token-shadow-card:
+    0 2px 8px oklch(0% 0 0 / 0.3), 0 0 0 1px var(--token-border-subtle);
 }

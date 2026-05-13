@@ -2,9 +2,14 @@ import PrimaryLayout from "@/components/layout/primaryLayout/PrimaryLayout";
 import { routing } from "@/i18n/routing";
 import { fontVariables } from "@/lib/styles/fonts";
 import { Params, ParamsProps } from "@/types";
-import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { hasLocale } from "next-intl";
+import {
+  getMessages,
+  getTranslations,
+  setRequestLocale,
+} from "next-intl/server";
 import { notFound } from "next/navigation";
+import { Providers } from "../(providers)";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -38,12 +43,14 @@ export default async function LocaleLayout({ children, params }: Props) {
   // Enable static rendering
   setRequestLocale(locale);
 
+  const messages = await getMessages();
+
   return (
-    <html className="h-full" lang={locale}>
+    <html className="h-full" lang={locale} suppressHydrationWarning>
       <body className={`${fontVariables} antialiased`}>
-        <NextIntlClientProvider>
+        <Providers locale={locale} messages={messages}>
           <PrimaryLayout>{children}</PrimaryLayout>
-        </NextIntlClientProvider>
+        </Providers>
       </body>
     </html>
   );

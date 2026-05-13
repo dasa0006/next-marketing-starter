@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 /* Design token definitions (raw --token-* custom properties) */
 @import "../../src/lib/styles/tokens.css";
 
