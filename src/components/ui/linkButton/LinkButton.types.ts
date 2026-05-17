@@ -1,4 +1,4 @@
-import { Background } from "@/components/layout/section/Section";
+import { Background } from "@/components/layout/section/Section.types";
 
 export interface LinkButtonProps {
   label: string;
