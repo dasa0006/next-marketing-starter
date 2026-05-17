@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
-@variant dark (&:where(.dark, .dark *));
-
 /* Design token definitions (raw --token-* custom properties) */
 @import "../../src/lib/styles/tokens.css";
+
+@variant dark (&:where(.dark, .dark *));
 
 /* =============================================================================
    Tailwind v4 Theme Bridge
