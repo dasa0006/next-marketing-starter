@@ -2,9 +2,10 @@ import Brand from "@/components/ui/brand/Brand";
 import LinkButton from "@/components/ui/linkButton/LinkButton";
 import { LocaleSwitcher } from "@/components/ui/localeSwitcher/LocaleSwitcher";
 import { Link } from "@/i18n/navigation";
+import { useMobileDrawerEffects } from "@/lib/hooks/useMobileDrawerEffects";
 import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { HeaderCTAProps, NavLinkProps } from "../siteHeader/SiteHeader.types";
 
 // ─── Mobile Drawer ────────────────────────────────────────────────────────────
@@ -27,74 +28,7 @@ const MobileDrawer = ({
   const panelRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-  // Lock body scroll while open
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      const id = window.setTimeout(() => closeButtonRef.current?.focus(), 50);
-      return () => {
-        clearTimeout(id);
-        document.body.style.overflow = "";
-      };
-    } else {
-      document.body.style.overflow = "";
-    }
-  }, [isOpen]);
-
-  // Close on Escape
-  useEffect(() => {
-    if (!isOpen) return;
-    const onKey = (e: globalThis.KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [isOpen, onClose]);
-
-  // Focus trap
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const panel = panelRef.current;
-    if (!panel) return;
-
-    const FOCUSABLE = [
-      "a[href]",
-      "button:not([disabled])",
-      "input:not([disabled])",
-      "select:not([disabled])",
-      "textarea:not([disabled])",
-      '[tabindex]:not([tabindex="-1"])',
-    ].join(",");
-
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key !== "Tab") return;
-
-      const focusable = Array.from(
-        panel.querySelectorAll<HTMLElement>(FOCUSABLE)
-      ).filter((el) => !el.closest("[aria-hidden='true']"));
-
-      if (focusable.length === 0) return;
-
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-
-      if (e.shiftKey) {
-        if (document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        }
-      } else {
-        if (document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-    };
-
-    panel.addEventListener("keydown", onKeyDown);
-    return () => panel.removeEventListener("keydown", onKeyDown);
-  }, [isOpen]);
+  useMobileDrawerEffects({ isOpen, onClose, panelRef, closeButtonRef });
 
   return (
     <>
