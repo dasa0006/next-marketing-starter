@@ -1,11 +1,15 @@
 "use client";
 
 import { Link } from "@/i18n/navigation";
-import { useConsent } from "@/lib/hooks/useConsent";
+import { useConsent } from "@/lib/consent";
 import { cn } from "@/lib/utils";
 import { Cookie } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
+
+// ─── Constants ────────────────────────────────────────────────────────────────
+
+export const ENTRY_ANIMATION_DELAY_MS = 400;
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
@@ -18,7 +22,7 @@ export const CookieBanner = () => {
   // Slide in after a short delay — avoids jarring appearance on first paint
   useEffect(() => {
     if (status === null) {
-      const timerId = setTimeout(() => setMounted(true), 400);
+      const timerId = setTimeout(() => setMounted(true), ENTRY_ANIMATION_DELAY_MS);
       return () => clearTimeout(timerId);
     }
   }, [status]);

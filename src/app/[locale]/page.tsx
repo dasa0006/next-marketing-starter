@@ -1,3 +1,4 @@
+import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 import IndexPage from "@/components/pages/Index";
 import { ParamsProps } from "@/types";
 import { setRequestLocale } from "next-intl/server";
@@ -8,5 +9,10 @@ export default async function Page({ params }: ParamsProps) {
   // Enable static rendering
   setRequestLocale(locale);
 
-  return <IndexPage />;
+  return (
+    <>
+      <OrganizationJsonLd />
+      <IndexPage />
+    </>
+  );
 }

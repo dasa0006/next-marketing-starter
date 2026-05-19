@@ -2,29 +2,26 @@ import Brand from "@/components/ui/brand/Brand";
 import LinkButton from "@/components/ui/linkButton/LinkButton";
 import { LocaleSwitcher } from "@/components/ui/localeSwitcher/LocaleSwitcher";
 import { Link } from "@/i18n/navigation";
+import { NAVIGATION } from "@/lib/config/navigation";
 import { useMobileDrawerEffects } from "@/lib/hooks/useMobileDrawerEffects";
 import { cn } from "@/lib/utils";
 import { X } from "lucide-react";
 import { useRef } from "react";
-import { HeaderCTAProps, NavLinkProps } from "../siteHeader/SiteHeader.types";
 
 // ─── Mobile Drawer ────────────────────────────────────────────────────────────
 
 interface DrawerProps {
   isOpen: boolean;
   onClose: () => void;
-  navLinks: NavLinkProps[];
-  ctas: HeaderCTAProps[];
-  showLocaleSwitcher?: boolean; // ← new flag
+  showLocaleSwitcher?: boolean;
 }
 
 const MobileDrawer = ({
   isOpen,
   onClose,
-  navLinks,
-  ctas,
   showLocaleSwitcher,
 }: DrawerProps) => {
+  const { navLinks, ctas } = NAVIGATION;
   const panelRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 

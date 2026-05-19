@@ -8,7 +8,5 @@ export const SITE_CONFIG = {
   twitterHandle: "@yourbrand",
   /** Default OG / Twitter share image (1200×630) */
   ogImage: "/og-default.png",
-  defaultLocale: "en",
-  locales: ["en", "da"],
   timezone: "Europe/Vienna",
 } as const;

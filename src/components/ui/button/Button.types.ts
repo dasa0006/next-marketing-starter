@@ -1,4 +1,4 @@
-import { TrackingMeta } from "@/lib/hooks/useButtonTracking";
+import { TrackingMeta, TrackFn } from "@/lib/hooks/useButtonTracking";
 import { ButtonHTMLAttributes, ReactNode } from "react";
 
 export type ButtonVariant =
@@ -27,5 +27,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   trackingEvent?: string;
   /** Analytics event metadata */
   trackingMeta?: TrackingMeta;
+  /** Explicit tracking function override (defaults to global configureTracking) */
+  track?: TrackFn;
   children: ReactNode;
 }

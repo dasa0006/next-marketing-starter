@@ -1,4 +1,5 @@
-import { SectionBackground, SectionSize } from "./Section.types";
+import { Surface } from "@/lib/config/theme";
+import { SectionSize } from "./Section.types";
 
 export const sizeMap: Record<SectionSize, string> = {
   sm: "py-12 md:py-16",
@@ -7,7 +8,7 @@ export const sizeMap: Record<SectionSize, string> = {
   xl: "py-32 md:py-40",
 };
 
-export const backgroundMap: Record<SectionBackground, string> = {
+export const backgroundMap: Record<Surface, string> = {
   white: "bg-surface-base text-text-primary",
   subtle: "bg-surface-subtle text-text-primary",
   dark: "bg-surface-inverted text-text-inverted",

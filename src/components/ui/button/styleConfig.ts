@@ -1,4 +1,13 @@
-import { ButtonVariant, ButtonSize } from "./Button.types";
+import { baseInteractive, sizeConfig } from "@/lib/styles/variants";
+import { ButtonVariant } from "./Button.types";
+
+export { sizeConfig };
+
+export const baseStyles = [
+  "relative",
+  baseInteractive,
+  "focus-visible:ring-brand-primary",
+].join(" ");
 
 export const variantStyles: Record<ButtonVariant, string> = {
   primary: [
@@ -32,18 +41,3 @@ export const variantStyles: Record<ButtonVariant, string> = {
     "disabled:text-text-disabled",
   ].join(" "),
 };
-
-export const sizeConfig: Record<
-  ButtonSize,
-  { button: string; icon: string; gap: string }
-> = {
-  sm: { button: "text-xs px-3 py-1.5", icon: "size-3.5", gap: "gap-1.5" },
-  md: { button: "text-sm px-4 py-2", icon: "size-4", gap: "gap-2" },
-  lg: { button: "text-base px-6 py-3", icon: "size-5", gap: "gap-2.5" },
-};
-
-export const baseStyles = [
-  "relative inline-flex items-center justify-center rounded-pill",
-  "font-semibold transition-all duration-200",
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2",
-].join(" ");

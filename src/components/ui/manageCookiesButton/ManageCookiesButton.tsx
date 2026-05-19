@@ -1,6 +1,6 @@
 "use client";
 
-import { useConsent } from "@/lib/hooks/useConsent";
+import { useConsent } from "@/lib/consent";
 
 /**
  * Renders as a plain text button matching the footer legal link style.

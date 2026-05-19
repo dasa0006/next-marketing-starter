@@ -1,5 +1,8 @@
-import PrimaryLayout from "@/components/layout/primaryLayout/PrimaryLayout";
+import { CookieBanner } from "@/components/layout/cookieBanner/CookieBanner";
+import SiteFooter from "@/components/layout/siteFooter/SiteFooter";
+import SiteHeader from "@/components/layout/siteHeader/SiteHeader";
 import { routing } from "@/i18n/routing";
+import { getPageMetadata } from "@/lib/seo";
 import { fontVariables } from "@/lib/styles/fonts";
 import { Params, ParamsProps } from "@/types";
 import { hasLocale } from "next-intl";
@@ -26,6 +29,7 @@ export async function generateMetadata({ params }: ParamsProps) {
       template: `%s | ${t("title")}`,
     },
     description: t("description"),
+    ...getPageMetadata(locale, ""),
   };
 }
 
@@ -49,7 +53,10 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html className="h-full" lang={locale} suppressHydrationWarning>
       <body className={`${fontVariables} antialiased`}>
         <Providers locale={locale} messages={messages}>
-          <PrimaryLayout>{children}</PrimaryLayout>
+          <SiteHeader />
+          <main>{children}</main>
+          <SiteFooter />
+          <CookieBanner />
         </Providers>
       </body>
     </html>

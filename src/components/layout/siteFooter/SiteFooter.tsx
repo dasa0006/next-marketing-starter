@@ -1,6 +1,7 @@
 import Brand from "@/components/ui/brand/Brand";
 import { ManageCookiesButton } from "@/components/ui/manageCookiesButton/ManageCookiesButton";
 import { Link } from "@/i18n/navigation";
+import { NAVIGATION } from "@/lib/config/navigation";
 import { cn } from "@/lib/utils";
 import { MaxWidthWrapper } from "../maxWidthWrapper/MaxWidthWrapper";
 import { FooterLinkProps, FooterProps } from "./SiteFooter.types";
@@ -20,7 +21,7 @@ const SiteFooter = ({
   tagline,
   columns = [],
   socialLinks = [],
-  legalLinks = [],
+  legalLinks = NAVIGATION.legalLinks,
   copyright,
   className,
 }: FooterProps) => {

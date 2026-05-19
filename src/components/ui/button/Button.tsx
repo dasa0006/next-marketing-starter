@@ -50,6 +50,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       rightIcon,
       trackingEvent,
       trackingMeta,
+      track,
       className,
       onClick,
       disabled,
@@ -62,6 +63,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const { handleClick } = useButtonTracking({
       event: trackingEvent,
       meta: trackingMeta,
+      track,
       onClick,
     });
 

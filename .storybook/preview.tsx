@@ -1,6 +1,7 @@
 // .storybook/preview.tsx
 import type { Preview } from "@storybook/nextjs-vite";
 import "../src/app/globals.css";
+import { ConsentProvider } from "../src/lib/consent";
 import { geistMono, geistSans } from "../src/lib/styles/fonts";
 import nextIntl from "./next-intl";
 
@@ -19,7 +20,11 @@ const preview: Preview = {
         geistMono.variable,
         "antialiased"
       );
-      return <Story />;
+      return (
+        <ConsentProvider>
+          <Story />
+        </ConsentProvider>
+      );
     },
   ],
   parameters: {

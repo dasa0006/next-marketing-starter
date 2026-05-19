@@ -46,3 +46,45 @@ export const CustomHeadingLevel: Story = {
     body: "The heading level can be customized from h1 through h4 using the headingLevel prop.",
   },
 };
+
+export const WithImageTop: Story = {
+  args: {
+    heading: "Image Above Text",
+    body: "When imagePosition is set to top, the image renders above the text content in a stacked layout. This is the default behavior.",
+    image: {
+      src: "/sample.jpg",
+      alt: "Sample landscape photograph",
+      width: 800,
+      height: 400,
+    },
+    imagePosition: "top",
+  },
+};
+
+export const WithImageLeft: Story = {
+  args: {
+    heading: "Image on the Left",
+    body: "With imagePosition set to left, the image and text sit side by side on larger screens. On mobile they stack vertically with the image on top.",
+    image: {
+      src: "/sample.jpg",
+      alt: "Sample landscape photograph",
+      width: 600,
+      height: 400,
+    },
+    imagePosition: "left",
+  },
+};
+
+export const WithImageRight: Story = {
+  args: {
+    heading: "Image on the Right",
+    body: "With imagePosition set to right, the text appears first and the image follows on larger screens. On mobile it stacks with the image below the text.",
+    image: {
+      src: "/sample.jpg",
+      alt: "Sample landscape photograph",
+      width: 600,
+      height: 400,
+    },
+    imagePosition: "right",
+  },
+};

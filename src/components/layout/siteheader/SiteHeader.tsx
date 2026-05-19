@@ -6,6 +6,7 @@ import LinkButton from "@/components/ui/linkButton/LinkButton";
 import { LocaleSwitcher } from "@/components/ui/localeSwitcher/LocaleSwitcher";
 import ToggleMode from "@/components/ui/toggleMode/ToggleMode";
 import { Link } from "@/i18n/navigation";
+import { NAVIGATION } from "@/lib/config/navigation";
 import { useScrolled } from "@/lib/hooks/useScrolled";
 import { cn } from "@/lib/utils";
 import { Menu } from "lucide-react";
@@ -14,12 +15,11 @@ import MobileDrawer from "../mobileDrawer/MobileDrawer";
 import { SiteHeaderProps } from "./SiteHeader.types";
 
 const SiteHeader = ({
-  navLinks = [],
-  ctas = [],
   variant = "solid",
   showLocaleSwitcher,
   className,
 }: SiteHeaderProps) => {
+  const { navLinks, ctas } = NAVIGATION;
   const [drawerOpen, setDrawerOpen] = useState(false);
   const scrolled = useScrolled();
 
@@ -47,13 +47,7 @@ const SiteHeader = ({
         <MaxWidthWrapper>
           <div className="flex h-16 items-center justify-between gap-8">
             {/* Brand */}
-            <Link
-              href={"/"}
-              aria-label="Go to homepage"
-              className="shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-border-focus focus-visible:ring-offset-2 rounded-md"
-            >
-              <Brand />
-            </Link>
+            <Brand href="/" />
 
             {/* Desktop nav */}
             {navLinks.length > 0 && (
@@ -121,8 +115,6 @@ const SiteHeader = ({
       <MobileDrawer
         isOpen={drawerOpen}
         onClose={() => setDrawerOpen(false)}
-        navLinks={navLinks}
-        ctas={ctas}
         showLocaleSwitcher={showLocaleSwitcher}
       />
     </>

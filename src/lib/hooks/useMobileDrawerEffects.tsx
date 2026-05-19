@@ -7,7 +7,7 @@ interface UseMobileDrawerEffectsOptions {
   closeButtonRef: RefObject<HTMLButtonElement | null>;
 }
 
-const useLockBodyScrollFocus = (
+export const useLockBodyScrollFocus = (
   isOpen: boolean,
   closeButtonRef: RefObject<HTMLButtonElement | null>
 ) => {
@@ -25,7 +25,7 @@ const useLockBodyScrollFocus = (
   }, [isOpen, closeButtonRef]);
 };
 
-const useCloseOnEscape = (isOpen: boolean, onClose: () => void) => {
+export const useCloseOnEscape = (isOpen: boolean, onClose: () => void) => {
   useEffect(() => {
     if (!isOpen) return;
     const onKey = (e: KeyboardEvent) => {
@@ -36,7 +36,7 @@ const useCloseOnEscape = (isOpen: boolean, onClose: () => void) => {
   }, [isOpen, onClose]);
 };
 
-const useFocusTrap = (
+export const useFocusTrap = (
   isOpen: boolean,
   panelRef: RefObject<HTMLDivElement | null>
 ) => {

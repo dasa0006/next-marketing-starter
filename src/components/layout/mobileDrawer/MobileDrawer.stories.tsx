@@ -15,7 +15,5 @@ export const Default: Story = {
   args: {
     isOpen: true,
     onClose: fn(),
-    navLinks: [],
-    ctas: [],
   },
 };

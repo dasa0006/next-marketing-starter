@@ -1,14 +1,19 @@
-import PageLayout from "../layout/pageLayout/PageLayout";
-import { PageData } from "./pages.types";
-const IndexPage = async () => {
-  const indexPageData: PageData = {
-    sections: [
-      { sectionID: "Hero section", section: <div>Hero Section</div> },
-      { sectionID: "Features section", section: <div>Features section</div> },
-    ],
-  };
+import { MaxWidthWrapper } from "@/components/layout/maxWidthWrapper/MaxWidthWrapper";
+import { Section } from "@/components/layout/section/Section";
 
-  return <PageLayout {...indexPageData} />;
-};
+const IndexPage = async () => (
+  <>
+    <Section>
+      <MaxWidthWrapper>
+        <div>Hero Section</div>
+      </MaxWidthWrapper>
+    </Section>
+    <Section>
+      <MaxWidthWrapper>
+        <div>Features section</div>
+      </MaxWidthWrapper>
+    </Section>
+  </>
+);
 
 export default IndexPage;

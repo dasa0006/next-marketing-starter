@@ -58,13 +58,12 @@ Provide a **GitHub Template Repo** that creates a fully functional, best‑pract
 - **FR9:** An **Image component** must prevent layout shift, provide lazy‑loading with a low‑quality placeholder, and enforce the presence of meaningful `alt` text.
 - **FR10:** A **Heading component** must allow semantic heading levels (`h1`–`h6`) with independent visual size control, following the typographic scale.
 - **FR11:** A **MaxWidth container** must provide consistent horizontal padding and a configurable maximum content width.
-- **FR12:** A **VideoEmbed component** must be included for responsive video embeds (YouTube/Vimeo) with accessible captions and a title. It must demonstrate the pattern for integrating third‑party media.
+### Text-and-Image Content Block (TextBlock)
 
-### Text‑and‑Image Content Block
-
-- **FR13:** A **TextMedia component** must be provided that renders a heading, one or more paragraphs, and an optional image in a side‑by‑side or stacked layout.
-  - Accepts `heading`, `body` (string or array of strings, with optional inline formatting), `image` (optional, using the existing Image component), and `imagePosition` (`left` | `right` | `top`).
-  - When `image` is supplied, automatically enforces the presence of meaningful `alt` text (Storybook a11y addon must flag missing alt).
+- **FR13:** The **TextBlock component** renders a heading, one or more paragraphs, and an optional image in a side‑by‑side or stacked layout.
+  - Accepts `heading`, `headingLevel`, `body`, `image` (optional, via the `TextBlockImage` interface with `src`, `alt`, `width`, `height`), and `imagePosition` (`left` | `right` | `top`).
+  - When `image` is supplied, the layout switches between stacked (`top`, default) and side-by-side (`left` / `right`) breakpoint-aware modes.
+  - Uses the existing `Image` component which enforces meaningful `alt` text (Storybook a11y addon flags missing alt).
   - Uses `cn()` for all class composition (see FR42).
   - All visuals (background, spacing, text colour) are driven by the centralized design tokens.
 

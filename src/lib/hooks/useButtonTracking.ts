@@ -7,10 +7,13 @@ export type TrackingMeta = Record<
   string | number | boolean | undefined
 >;
 
+export type TrackFn = (event: string, meta?: TrackingMeta) => void;
+
 interface UseButtonTrackingOptions {
   event?: string;
   meta?: TrackingMeta;
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
+  track?: TrackFn;
 }
 
 interface UseButtonTrackingReturn {
@@ -20,8 +23,6 @@ interface UseButtonTrackingReturn {
 // ─── Default Adapter ─────────────────────────────────────────────────────────
 // Swap this out for Segment, Mixpanel, PostHog, etc. at the app boundary
 // by calling `configureTracking` once at startup.
-
-type TrackFn = (event: string, meta?: TrackingMeta) => void;
 
 let _track: TrackFn = (event, meta) => {
   if (process.env.NODE_ENV === "development") {
@@ -59,15 +60,17 @@ export function useButtonTracking({
   event,
   meta,
   onClick,
+  track: trackFn,
 }: UseButtonTrackingOptions): UseButtonTrackingReturn {
   const handleClick = useCallback(
     (e: MouseEvent<HTMLButtonElement>) => {
+      const fn = trackFn ?? _track;
       if (event) {
-        _track(event, meta);
+        fn(event, meta);
       }
       onClick?.(e);
     },
-    [event, meta, onClick]
+    [event, meta, onClick, trackFn]
   );
 
   return { handleClick };

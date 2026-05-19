@@ -17,5 +17,23 @@
     "tryAgain": "Prøv igen",
     "backHome": "Gå tilbage til forsiden",
     "reference": "Fejl reference"
+  },
+  "ContactForm": {
+    "nameLabel": "Navn",
+    "namePlaceholder": "Dit navn",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "din@email.dk",
+    "messageLabel": "Besked",
+    "messagePlaceholder": "Fortæl os om dit projekt…",
+    "submit": "Send besked",
+    "success": "Tak! Din besked er blevet sendt.",
+    "errors": {
+      "nameRequired": "Indtast venligst dit navn.",
+      "nameMinLength": "Navn skal være mindst 2 tegn.",
+      "emailRequired": "Indtast venligst din e-mail.",
+      "emailInvalid": "Indtast venligst en gyldig e-mail.",
+      "messageRequired": "Indtast venligst en besked.",
+      "messageMinLength": "Beskeden skal være mindst 10 tegn."
+    }
   }
 }
